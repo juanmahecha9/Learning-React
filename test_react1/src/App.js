@@ -7,15 +7,37 @@ visualización. */
 un ejemplo seria:
 <h1>Hello World</h1> esto que se ve como HTML, internamente en React se traduce como
 React.createElement("h1", null, "Hello World") */
-
+import React from "react"; //biblioteca que permite crear interfaces
 import "./App.css"; //importar los estilos de css
 //funcion App() permite devolver que es o que se quiere pintar por pantalla
-function App() {
+
+/* Crear componentes */
+/* uso de propiedades con los componetes 
+estos se comportanc como un objeto */
+function Helloworld(props) {
   return (
-    // esto no es HTML, se conoce como JSX,
-    <div>Hello world...</div>
+    <div id="hello">
+      <h3>{props.mytext}</h3>
+      {props.subtitle}
+    </div>
   );
 }
 
+/* equivalentes de la funcion App */
+
+/* const App = () => <div>This is my component: <Helloworld></Helloworld> </div> */
+
+function App() {
+  return (
+    // esto no es HTML, se conoce como JSX,
+    <div>
+      This is my component:
+      {/* paso de propiedades en el props, se pueden pasar cuantas caracteristicas sean necesarias o requeridas */}
+      <Helloworld mytext="Hello Juan" subtitle="Hola.." />
+      <Helloworld mytext="Hello world" subtitle="componente 2" />
+      <Helloworld mytext="Juan" subtitle="componente 3" />
+    </div>
+  );
+}
 
 export default App;
