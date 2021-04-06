@@ -23,6 +23,14 @@ function Helloworld(props) {
   );
 }
 
+function HelloJuan(){
+  return(
+    <div>
+      <Helloworld mytext="Juan, componente interno"/>
+    </div>
+  )
+}
+
 /* equivalentes de la funcion App */
 
 /* const App = () => <div>This is my component: <Helloworld></Helloworld> </div> */
@@ -36,6 +44,7 @@ function App() {
       <Helloworld mytext="Hello Juan" subtitle="Hola.." />
       <Helloworld mytext="Hello world" subtitle="componente 2" />
       <Helloworld mytext="Juan" subtitle="componente 3" />
+      <HelloJuan/>
     </div>
   );
 }
