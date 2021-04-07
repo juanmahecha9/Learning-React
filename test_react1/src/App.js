@@ -23,16 +23,62 @@ function Helloworld(props) {
   );
 }
 
-function HelloJuan(){
-  return(
-    <div>
-      <Helloworld mytext="Juan, componente interno"/>
+function HelloJuan() {
+  return (
+    <div id="id1">
+      <Helloworld mytext="Juan, componente interno" />
     </div>
-  )
+  );
+}
+/* Creacion de clases usando herencia de REACT */
+class HelloWorld1 extends React.Component {
+  // esto se comportara como una funcion
+
+  /* manejo de estados */
+
+  state = {
+    show: true /* deja ver o no el compoente */,
+  };
+
+  /* Crear metodos */
+  cambioEstado = () => {
+    // uso de una funcion almacenada en una variabe
+    alert("Cambio de estado de la clase");
+    this.setState({
+      show: !this.state.show,
+    }); /* manejo de estados con las propiedades de React */
+  };
+
+  //llamar el metodo render para retornar la respuesta
+  render() {
+    //retorno
+    //manejo de estados
+    if (this.state.show) {
+      // dentro de la clase toca usar this. ara llamar las variables
+      return (
+        <div id="hello">
+          {/* en esto, no se accede a props como un parametro sino que se usa this.props que es ahora una propiedad */}
+          <h3>{this.props.mytext}</h3>
+          {this.props.subtitle}
+          <br />
+          <button onClick={this.cambioEstado}>
+            Cambiar el estado de SHOW
+          </button>{" "}
+          {/* usar eventos de los botones */}
+        </div>
+      );
+    } else {
+      return (
+        <div id="hello">
+          <h3>NO SE PUEDE MOSTRAR EL COMPONETE</h3>
+          <button onClick={this.cambioEstado}>Cambiar el estado de SHOW</button>
+        </div>
+      );
+    }
+  }
 }
 
 /* equivalentes de la funcion App */
-
 /* const App = () => <div>This is my component: <Helloworld></Helloworld> </div> */
 
 function App() {
@@ -44,7 +90,13 @@ function App() {
       <Helloworld mytext="Hello Juan" subtitle="Hola.." />
       <Helloworld mytext="Hello world" subtitle="componente 2" />
       <Helloworld mytext="Juan" subtitle="componente 3" />
-      <HelloJuan/>
+      <HelloJuan />
+      {/* Estados de los componentes */}
+      <br />
+      <HelloWorld1
+        mytext="Creando este componete con el uso de una clase"
+        subtitle="extendiendo desde las propiedades de REACT"
+      />
     </div>
   );
 }
