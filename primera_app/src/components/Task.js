@@ -5,13 +5,24 @@ import React, { Component } from "react";
 import "./Task.css";
 
 class Task extends Component {
+  /* cambiar los estilos dependiendo de las propiedades ingresadas */
+  StyleComplete() {
+    return {
+      fontSize: "20px",
+      color: this.props.task.done ? "gray" : "black",
+      textDecoration: this.props.task.done ? "line-through" : "none",
+    };
+  }
+
   render() {
     const { task } = this.props;
     return (
-      <div className="tarea">
-        {task.title} -{task.description} -{task.done} -{task.id}
-        <input type="checkbox" />
-        <button style={btnDelete}>x</button>
+      <div className="tarea" style={this.StyleComplete()}>
+        {task.id} - {task.title} - {task.description} - {task.done}
+        <input className="done" type="checkbox" />
+        <button className="btn" style={btnDelete}>
+          x
+        </button>
       </div>
     );
   }

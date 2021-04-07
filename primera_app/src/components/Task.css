@@ -1,6 +1,14 @@
 .tarea {
+    width: 50%;
+    margin: auto;
     margin: 15px;
     border: 1px black dotted;
-    margin: auto;
     padding: 1rem;
+}
+
+.done {
+    margin-left: 1rem;
+}
+.btn {
+    margin-left: 1rem;
 }
