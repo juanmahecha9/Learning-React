@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/* importar datos de pruebas */
+import tasks from "./sample/datos.json";
+//console.log(task)
+/* importar nuevo componente */
+import Tasks from "./components/Tasks"
+
+/* Funcion principal */
+class App extends Component {
+  /* Definir los datos que le pertenecen al componente */
+  state = {
+    tasks: tasks,
+  };
+
+  /* metodo render carga la informacion */
+  render() {
+    return (
+      <div>
+      <Tasks tasks={this.state.tasks} />
+      </div>
+    );
+  }
 }
 
 export default App;
